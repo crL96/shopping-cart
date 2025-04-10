@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import ItemCard from "./ItemCard";
+import ItemCard from "../itemCard/ItemCard";
+import styles from "./browseItems.module.css";
 
 function BrowseItems() {
     const [data, setData] = useState(null);
@@ -14,7 +15,7 @@ function BrowseItems() {
     if (data === null) return <p>Loading...</p>
 
     return (
-        <div className="allItems">
+        <div className={styles.allItems}>
             {data.map((item) => {
                 return <ItemCard data={item} key={item.id}/>
             })}

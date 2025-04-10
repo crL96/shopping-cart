@@ -1,6 +1,8 @@
+import style from "./itemCard.module.css";
+
 function ItemCard({data}) {
     return (
-        <div className="itemCard">
+        <div className={style.itemCard}>
             <h2>{data.title}</h2>
             <img src={data.image} alt="" />
             <p>${data.price}</p>
