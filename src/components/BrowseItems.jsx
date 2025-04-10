@@ -7,7 +7,8 @@ function BrowseItems() {
     useEffect(() => {
         fetch('https://fakestoreapi.com/products/')
             .then(response => response.json())
-            .then(responseData => setData(responseData));
+            .then(responseData => setData(responseData.slice(0, 20)));
+            // slice array incase API returns more than 20 items
     }, []);
 
     if (data === null) return <p>Loading...</p>
