@@ -1,9 +1,9 @@
 import style from "./cart.module.css";
 
-function Cart({ cartData }) {
+function Cart({ cartData, deleteFromCart }) {
     return (
         <div className={style.cartPage}>
-            <CartItemsList cartData={cartData} />
+            <CartItemsList cartData={cartData} deleteFromCart={deleteFromCart} />
             <OrderSummary cartData={cartData}/>
         </div>
     );
@@ -26,19 +26,23 @@ function OrderSummary({ cartData }) {
     );
 }
 
-function CartItemsList({cartData}) {
+function CartItemsList({cartData, deleteFromCart}) {
     return (
         <div className={style.cartItemsList}>
             {cartData.map((item) => {
                 return (
-                    <CartItem item={item} key={item.id}/>
+                    <CartItem item={item} key={item.id} deleteFromCart={deleteFromCart}/>
                 );
             })}
         </div>
     );
 }
 
-function CartItem({item}) {
+function CartItem({item, deleteFromCart}) {
+    function handleDeleteFromCart() {
+        deleteFromCart(item.id)
+    }
+
     return (
         <div className={style.cartItem}>
             <div><img src={item.imageUrl} alt="" /></div>
@@ -46,6 +50,7 @@ function CartItem({item}) {
                 <h3>{item.title}</h3>
                 <p>Quantity: {item.quantity}</p>
                 <p>Total Price: {item.total}</p>
+                <button onClick={handleDeleteFromCart}>Delete</button>
             </div>
         </div>
     );
