@@ -16,3 +16,20 @@
 .itemCard > img {
     max-width: 100%;
 }
+
+.addToCartForm {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.addToCartForm > input {
+    border-radius: 0.5rem;
+    border: none;
+    text-align: center;
+}
+
+.addToCartForm > * {
+    flex-shrink: 1;
+    max-width: 8rem;
+}
