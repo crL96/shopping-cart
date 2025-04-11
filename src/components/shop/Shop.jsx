@@ -5,6 +5,18 @@ import Cart from '../cart/Cart';
 function Shop() {
   const [cart, setCart] = useState([]);
 
+  function setCartItemQuantity(id, value) {
+    for (let i = 0; i < cart.length; i++) {
+        if (cart[i].id == id) {
+            const newCart = cart;
+            newCart[i].quantity = value;
+            newCart[i].total = newCart[i].quantity * newCart[i].price;
+            setCart([ ...newCart ]);
+            return;
+        }
+    }
+    }
+
   function deleteFromCart(id) {
     const newCart = [];
     for (let i = 0; i < cart.length; i++) {
@@ -38,7 +50,11 @@ function Shop() {
 
   return (
     <div>
-        <Cart cartData={cart} deleteFromCart={deleteFromCart}/>
+        <Cart 
+            cartData={cart}
+            deleteFromCart={deleteFromCart}
+            setCartItemQuantity={setCartItemQuantity}
+        />
         <BrowseItems addToCart={addToCart}/>
     </div>
   );
