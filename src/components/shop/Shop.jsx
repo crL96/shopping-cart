@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import BrowseItems from '../browseItems/BrowseItems'
 import Cart from '../cart/Cart';
+import { Link } from 'react-router';
+import style from "./shop.module.css";
 
 function Shop() {
   const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
 
   function setCartItemQuantity(id, value) {
     for (let i = 0; i < cart.length; i++) {
@@ -50,12 +53,26 @@ function Shop() {
 
   return (
     <div>
-        <Cart 
-            cartData={cart}
-            deleteFromCart={deleteFromCart}
-            setCartItemQuantity={setCartItemQuantity}
-        />
-        <BrowseItems addToCart={addToCart}/>
+        <nav className={style.navBar}>
+            <button>
+                <Link to="/">Home</Link>
+            </button>
+            <button onClick={() => setShowCart(false)}>Shop</button>
+            <div className={style.cartBtnContainer}>
+                <button onClick={() => setShowCart(true)}>Cart</button>
+                {(cart.length > 0) && <span>{cart.length}</span>}
+            </div>
+        </nav>
+        {showCart && 
+            <Cart 
+                cartData={cart}
+                deleteFromCart={deleteFromCart}
+                setCartItemQuantity={setCartItemQuantity}
+            />
+        }
+        {!showCart &&
+            <BrowseItems addToCart={addToCart}/>
+        }
     </div>
   );
 }
