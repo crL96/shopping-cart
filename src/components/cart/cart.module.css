@@ -1,0 +1,30 @@
+.cartItem {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+
+    background-color: white;
+    color: black;
+    border-radius: 1rem;
+}
+
+.cartItem img {
+    max-width: 120px;
+}
+
+.cartItem > div {
+    text-align: start;
+}
+
+.cartPage {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+@media (max-width: 680px) {
+    .cartPage {
+        grid-template-columns: 1fr;
+    }
+  }
