@@ -1,7 +1,14 @@
 import style from "./cart.module.css";
 
 function Cart({ cartData, deleteFromCart, setCartItemQuantity }) {
-    if (cartData == null) return (<p>Loading...</p>);
+    if (cartData == null || cartData.length === 0) {
+        return (
+        <div>
+            <p>Empty cart...</p>
+            <p>Go back to the store to add something</p>
+        </div>
+    );
+    }
 
     return (
         <div className={style.cartPage}>
