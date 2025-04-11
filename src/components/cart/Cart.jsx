@@ -1,6 +1,8 @@
 import style from "./cart.module.css";
 
 function Cart({ cartData, deleteFromCart, setCartItemQuantity }) {
+    if (cartData == null) return (<p>Loading...</p>);
+
     return (
         <div className={style.cartPage}>
             <CartItemsList
