@@ -79,21 +79,3 @@ function CartItem({ item, deleteFromCart, setCartItemQuantity }) {
 }
 
 export default Cart;
-
-// function CartItem({item, deleteFromCart}) {
-//     function handleDeleteFromCart() {
-//         deleteFromCart(item.id)
-//     }
-
-//     return (
-//         <div className={style.cartItem}>
-//             <div><img src={item.imageUrl} alt="" /></div>
-//             <div>
-//                 <h3>{item.title}</h3>
-//                 <p>Quantity: {item.quantity}</p>
-//                 <p>Total Price: {item.total}</p>
-//                 <button onClick={handleDeleteFromCart}>Delete</button>
-//             </div>
-//         </div>
-//     );
-// }
