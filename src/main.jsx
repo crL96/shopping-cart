@@ -5,11 +5,13 @@ import './index.css'
 import App from './App.jsx'
 import Shop from './components/shop/Shop.jsx';
 import CheckOutPage from './components/checkOutPage/CheckOutPage.jsx';
+import ErrorPage from './components/errorPage/ErrorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "shop",
