@@ -3,6 +3,7 @@ import BrowseItems from '../browseItems/BrowseItems'
 import Cart from '../cart/Cart';
 import { Link } from 'react-router';
 import style from "./shop.module.css";
+import logo from "../../assets/images/logo.png";
 
 function Shop() {
   const storedCart = (JSON.parse(localStorage.getItem("cart")));
@@ -61,7 +62,7 @@ function Shop() {
     <div>
         <nav className={style.navBar}>
             <div className={style.header}>
-                <img src="/src/assets/images/logo.png" alt="" />
+                <img src={logo} alt="" />
                 <h1>Store4</h1>
             </div>
             <div className={style.links}>
