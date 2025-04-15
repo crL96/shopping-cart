@@ -60,7 +60,10 @@ function Shop() {
   return (
     <div>
         <nav className={style.navBar}>
-            <h1>Store4</h1>
+            <div className={style.header}>
+                <img src="../../../public/logo.png" alt="" />
+                <h1>Store4</h1>
+            </div>
             <div className={style.links}>
                 <Link to="/">Home</Link>
                 <a onClick={() => setShowCart(false)}>Shop</a>
