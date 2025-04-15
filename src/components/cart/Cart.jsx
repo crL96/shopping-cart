@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import style from "./cart.module.css";
 
 function Cart({ cartData, deleteFromCart, setCartItemQuantity }) {
@@ -23,6 +24,12 @@ function Cart({ cartData, deleteFromCart, setCartItemQuantity }) {
 }
 
 function OrderSummary({ cartData }) {
+    const navigate = useNavigate();
+
+    function handleCheckout() {
+        navigate("/checkout");
+    }
+
     let orderTotal = 0;
 
     for (let i = 0; i < cartData.length; i++) {
@@ -34,7 +41,7 @@ function OrderSummary({ cartData }) {
             <h2>Order Summary</h2>
             <p>Total: ${Math.round(orderTotal * 100) / 100}</p>
             <p>Number of items: {cartData.length}</p>
-            <button>Checkout</button>
+            <button onClick={handleCheckout}>Checkout</button>
         </div>
     );
 }
