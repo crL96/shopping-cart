@@ -60,13 +60,14 @@ function Shop() {
   return (
     <div>
         <nav className={style.navBar}>
-            <button>
+            <h1>Store4</h1>
+            <div className={style.links}>
                 <Link to="/">Home</Link>
-            </button>
-            <button onClick={() => setShowCart(false)}>Shop</button>
-            <div className={style.cartBtnContainer}>
-                <button onClick={() => setShowCart(true)}>Cart</button>
-                {(cart.length > 0) && <span>{cart.length}</span>}
+                <a onClick={() => setShowCart(false)}>Shop</a>
+                <div className={style.cartBtnContainer}>
+                    <a onClick={() => setShowCart(true)}>Cart</a>
+                    {(cart.length > 0) && <span>{cart.length}</span>}
+                </div>
             </div>
         </nav>
         {showCart && 
