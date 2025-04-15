@@ -4,3 +4,25 @@
   padding: 2rem;
   text-align: center;
 }
+
+.homePage {
+  margin-top: calc(50vh - 6rem);
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.homePage > h1 {
+  font-size: 4rem;
+}
+
+.homePage {
+  font-size: 1.5rem;
+}
+
+.homePage > img {
+  max-width: 400px;
+  border-radius: 2rem;
+}
