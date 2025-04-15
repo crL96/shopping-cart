@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BrowseItems from '../browseItems/BrowseItems'
 import Cart from '../cart/Cart';
 import { Link } from 'react-router';
 import style from "./shop.module.css";
 
 function Shop() {
-  const [cart, setCart] = useState([]);
+  const storedCart = (JSON.parse(localStorage.getItem("cart")));
+
+  const [cart, setCart] = useState((storedCart !== null) ? storedCart : []);
   const [showCart, setShowCart] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   function setCartItemQuantity(id, value) {
     for (let i = 0; i < cart.length; i++) {
