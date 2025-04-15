@@ -61,7 +61,7 @@ function Shop() {
     <div>
         <nav className={style.navBar}>
             <div className={style.header}>
-                <img src="../../../public/logo.png" alt="" />
+                <img src="/src/assets/images/logo.png" alt="" />
                 <h1>Store4</h1>
             </div>
             <div className={style.links}>
