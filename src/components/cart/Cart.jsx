@@ -85,6 +85,7 @@ function CartItem({ item, deleteFromCart, setCartItemQuantity }) {
                         type="number"
                         value={item.quantity}
                         onChange={handleQuantityChange}
+                        min={1}
                     />
                 </label>
                 <p>Total Price: {item.total}</p>
