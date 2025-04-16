@@ -1,6 +1,6 @@
 # Shopping Cart
 
-Link to live build: https://shopping-cart-store4.netlify.app/shop
+Link to live build: https://shopping-cart-store4.netlify.app
 
 ![Site preview](sitePreview.png)
 
