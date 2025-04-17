@@ -1,6 +1,10 @@
 import BrowseItems from '../browseItems/BrowseItems'
+import { useContext } from "react";
+import { CartContext } from "../../App";
 
-function Shop({ setCart, cart }) {
+function Shop() {
+
+  const { cart, setCart } = useContext(CartContext);
 
   function addToCart(id, title, price, quantity, imageUrl) {
     // if item already exists in cart, add quantity

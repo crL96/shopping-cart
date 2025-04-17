@@ -1,8 +1,12 @@
 import style from "./navBar.module.css";
 import logo from "../../assets/images/logo.png";
 import { Link } from "react-router";
+import { useContext } from "react";
+import { CartContext } from "../../App";
 
-function NavBar({ cartItemsNr }) {
+function NavBar() {
+    const { cart } = useContext(CartContext);
+
     return (
         <nav className={style.navBar}>
             <div className={style.header}>
@@ -14,7 +18,7 @@ function NavBar({ cartItemsNr }) {
                 <Link to="/shop">Shop</Link>
                 <div className={style.cartBtnContainer}>
                     <Link to="/cart">Cart</Link>
-                    {(cartItemsNr > 0) && <span>{cartItemsNr}</span>}
+                    {(cart.length > 0) && <span>{cart.length}</span>}
                 </div>
             </div>
         </nav>

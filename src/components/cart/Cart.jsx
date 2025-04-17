@@ -1,13 +1,17 @@
 import { useNavigate } from "react-router";
 import style from "./cart.module.css";
+import { useContext } from "react";
+import { CartContext } from "../../App";
 
 
-function Cart({ cartData, setCart }) {
+function Cart() {
+
+    const { cart, setCart } = useContext(CartContext);
    
     function setCartItemQuantity(id, value) {
-        for (let i = 0; i < cartData.length; i++) {
-            if (cartData[i].id == id) {
-                const newCart = cartData;
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].id == id) {
+                const newCart = cart;
                 newCart[i].quantity = value;
                 newCart[i].total = newCart[i].quantity * newCart[i].price;
                 setCart([ ...newCart ]);
@@ -18,15 +22,15 @@ function Cart({ cartData, setCart }) {
     
       function deleteFromCart(id) {
         const newCart = [];
-        for (let i = 0; i < cartData.length; i++) {
-            if (cartData[i].id != id) {
-                newCart.push(cartData[i]);
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].id != id) {
+                newCart.push(cart[i]);
             }
         }
         setCart([ ...newCart ]);
       }
 
-    if (cartData == null || cartData.length === 0) {
+    if (cart == null || cart.length === 0) {
         return (
         <div>
             <p>Empty cart...</p>
@@ -38,16 +42,16 @@ function Cart({ cartData, setCart }) {
     return (
         <div className={style.cartPage}>
             <CartItemsList
-                cartData={cartData}
+                cart={cart}
                 deleteFromCart={deleteFromCart}
                 setCartItemQuantity={setCartItemQuantity}
             />
-            <OrderSummary cartData={cartData} />
+            <OrderSummary cart={cart} />
         </div>
     );
 }
 
-function OrderSummary({ cartData }) {
+function OrderSummary({ cart }) {
     const navigate = useNavigate();
 
     function handleCheckout() {
@@ -56,24 +60,24 @@ function OrderSummary({ cartData }) {
 
     let orderTotal = 0;
 
-    for (let i = 0; i < cartData.length; i++) {
-        orderTotal = orderTotal + cartData[i].total;
+    for (let i = 0; i < cart.length; i++) {
+        orderTotal = orderTotal + cart[i].total;
     }
 
     return (
         <div className={style.orderSummary}>
             <h2>Order Summary</h2>
             <p>Total: ${Math.round(orderTotal * 100) / 100}</p>
-            <p>Number of items: {cartData.length}</p>
+            <p>Number of items: {cart.length}</p>
             <button onClick={handleCheckout}>Checkout</button>
         </div>
     );
 }
 
-function CartItemsList({ cartData, deleteFromCart, setCartItemQuantity }) {
+function CartItemsList({ cart, deleteFromCart, setCartItemQuantity }) {
     return (
         <div className={style.cartItemsList}>
-            {cartData.map((item) => {
+            {cart.map((item) => {
                 return (
                     <CartItem
                         item={item}
