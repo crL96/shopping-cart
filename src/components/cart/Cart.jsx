@@ -1,7 +1,31 @@
 import { useNavigate } from "react-router";
 import style from "./cart.module.css";
 
-function Cart({ cartData, deleteFromCart, setCartItemQuantity }) {
+
+function Cart({ cartData, setCart }) {
+   
+    function setCartItemQuantity(id, value) {
+        for (let i = 0; i < cartData.length; i++) {
+            if (cartData[i].id == id) {
+                const newCart = cartData;
+                newCart[i].quantity = value;
+                newCart[i].total = newCart[i].quantity * newCart[i].price;
+                setCart([ ...newCart ]);
+                return;
+            }
+        }
+        }
+    
+      function deleteFromCart(id) {
+        const newCart = [];
+        for (let i = 0; i < cartData.length; i++) {
+            if (cartData[i].id != id) {
+                newCart.push(cartData[i]);
+            }
+        }
+        setCart([ ...newCart ]);
+      }
+
     if (cartData == null || cartData.length === 0) {
         return (
         <div>
