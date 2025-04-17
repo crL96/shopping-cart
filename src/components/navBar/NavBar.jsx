@@ -9,10 +9,12 @@ function NavBar() {
 
     return (
         <nav className={style.navBar}>
-            <div className={style.header}>
-                <img src={logo} alt="" />
-                <h1>Store4</h1>
-            </div>
+            <Link to="/">
+                <div className={style.header}>
+                    <img src={logo} alt="" />
+                    <h1>Store4</h1>
+                </div>
+            </Link>
             <div className={style.links}>
                 <Link to="/">Home</Link>
                 <Link to="/shop">Shop</Link>
