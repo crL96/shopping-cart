@@ -46,16 +46,17 @@ function Cart() {
                 deleteFromCart={deleteFromCart}
                 setCartItemQuantity={setCartItemQuantity}
             />
-            <OrderSummary cart={cart} />
+            <OrderSummary cart={cart} setCart={setCart} />
         </div>
     );
 }
 
-function OrderSummary({ cart }) {
+function OrderSummary({ cart, setCart }) {
     const navigate = useNavigate();
 
     function handleCheckout() {
         navigate("/checkout");
+        setCart([]);
     }
 
     let orderTotal = 0;

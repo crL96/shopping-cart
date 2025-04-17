@@ -4,6 +4,7 @@ function CheckOutPage() {
     return (
         <div>
             <p>Thank you for shopping with us!</p>
+            <p>Your cart has been cleared.</p>
             <p>(Checkout feature hasn't been implemented)</p>
             <Link to="/shop">Back to the store</Link>
         </div>
