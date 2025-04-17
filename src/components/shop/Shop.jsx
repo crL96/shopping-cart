@@ -1,15 +1,10 @@
 import { useEffect, useState } from 'react'
 import BrowseItems from '../browseItems/BrowseItems'
-import Cart from '../cart/Cart';
-import { Link } from 'react-router';
-import style from "./shop.module.css";
-import logo from "../../assets/images/logo.png";
 
 function Shop() {
   const storedCart = (JSON.parse(localStorage.getItem("cart")));
 
   const [cart, setCart] = useState((storedCart !== null) ? storedCart : []);
-  const [showCart, setShowCart] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -60,30 +55,7 @@ function Shop() {
 
   return (
     <div>
-        <nav className={style.navBar}>
-            <div className={style.header}>
-                <img src={logo} alt="" />
-                <h1>Store4</h1>
-            </div>
-            <div className={style.links}>
-                <Link to="/">Home</Link>
-                <a onClick={() => setShowCart(false)}>Shop</a>
-                <div className={style.cartBtnContainer}>
-                    <a onClick={() => setShowCart(true)}>Cart</a>
-                    {(cart.length > 0) && <span>{cart.length}</span>}
-                </div>
-            </div>
-        </nav>
-        {showCart && 
-            <Cart 
-                cartData={cart}
-                deleteFromCart={deleteFromCart}
-                setCartItemQuantity={setCartItemQuantity}
-            />
-        }
-        {!showCart &&
-            <BrowseItems addToCart={addToCart}/>
-        }
+      <BrowseItems addToCart={addToCart}/>
     </div>
   );
 }
