@@ -2,6 +2,7 @@ import './App.css'
 import { Link } from 'react-router';
 import homePageImg from "./assets/images/homePageImg.png";
 import { createBrowserRouter, Router, RouterProvider} from "react-router-dom";
+import { useState, useEffect } from 'react';
 import Shop from './components/shop/Shop.jsx';
 import CheckOutPage from './components/checkOutPage/CheckOutPage.jsx';
 import ErrorPage from './components/errorPage/ErrorPage.jsx';
@@ -20,12 +21,21 @@ function HomePage() {
 }
 
 function App() {
+  const storedCart = (JSON.parse(localStorage.getItem("cart")));
+
+  const [cart, setCart] = useState((storedCart !== null) ? storedCart : []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+
   const router = createBrowserRouter([
     {
       path: "/",
       element: 
       <>
-        <NavBar />
+        <NavBar cartItemsNr={cart.length} />
         <HomePage />
       </>,
       errorElement: <ErrorPage />,
@@ -34,15 +44,15 @@ function App() {
       path: "shop",
       element: 
       <>
-        <NavBar />
-        <Shop />
+        <NavBar cartItemsNr={cart.length} />
+        <Shop cart={cart} setCart={setCart} />
       </>,
     },
     {
       path: "checkout",
       element: 
       <>
-        <NavBar />
+        <NavBar cartItemsNr={cart.length} />
         <CheckOutPage />
       </>,
     },
@@ -50,8 +60,8 @@ function App() {
       path: "cart",
       element: 
       <>
-        <NavBar />
-        <Cart />
+        <NavBar cartItemsNr={cart.length} />
+        <Cart cartData={cart} setCart={setCart} />
       </>
     },
   ]);
