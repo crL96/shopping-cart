@@ -11,9 +11,9 @@ function NavBar({ cartItemsNr }) {
             </div>
             <div className={style.links}>
                 <Link to="/">Home</Link>
-                <Link to="shop">Shop</Link>
+                <Link to="/shop">Shop</Link>
                 <div className={style.cartBtnContainer}>
-                    <Link to="cart">Cart</Link>
+                    <Link to="/cart">Cart</Link>
                     {(cartItemsNr > 0) && <span>{cartItemsNr}</span>}
                 </div>
             </div>
